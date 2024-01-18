@@ -12,6 +12,8 @@ build/
 *.iws
 *.iml
 *.ipr
+*.properties
+src/main/resources/graphics
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
