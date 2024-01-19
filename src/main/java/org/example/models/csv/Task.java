@@ -39,6 +39,12 @@ public class Task {
         this.scores = scores;
     }
 
+    public Task(String name, TaskType type, Integer maxScore) {
+        this.name = name;
+        this.type = type;
+        this.maxScore = maxScore;
+    }
+
     public String getName() {
         return name;
     }

@@ -56,6 +56,18 @@ public class Module {
         this.scores = scores;
     }
 
+    public Module(String name,
+                  Integer maxScoreByHomework,
+                  Integer maxScoreByControlQuestion,
+                  Integer maxScoreByExercise,
+                  List<Task> tasks){
+        this.name = name;
+        this.maxScoreByHomework = maxScoreByHomework;
+        this.maxScoreByControlQuestion = maxScoreByControlQuestion;
+        this.maxScoreByExercise = maxScoreByExercise;
+        this.tasks = tasks;
+    }
+
     public String getName(){
         return name;
     }
