@@ -20,11 +20,4 @@ public interface CsvParser {
      */
     List<Module> getModuleFromCsv(Integer group);
 
-    /**
-     * Получение списка студентов из csv файла
-     *
-     * @param group номер группы
-     * @return список студентов
-     */
-    List<Student> getStudentsFromCsv(Integer group);
 }

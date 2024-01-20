@@ -1,9 +1,6 @@
 package org.example.models.csv;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author Tribushko Danil
@@ -46,26 +43,13 @@ public class Module {
                   Integer maxScoreByHomework,
                   Integer maxScoreByControlQuestion,
                   Integer maxScoreByExercise,
-                  List<Task> tasks,
-                  List<ModuleScore> scores){
-        this.name = name;
-        this.maxScoreByHomework = maxScoreByHomework;
-        this.maxScoreByControlQuestion = maxScoreByControlQuestion;
-        this.maxScoreByExercise = maxScoreByExercise;
-        this.tasks = tasks;
-        this.scores = scores;
-    }
-
-    public Module(String name,
-                  Integer maxScoreByHomework,
-                  Integer maxScoreByControlQuestion,
-                  Integer maxScoreByExercise,
                   List<Task> tasks){
         this.name = name;
         this.maxScoreByHomework = maxScoreByHomework;
         this.maxScoreByControlQuestion = maxScoreByControlQuestion;
         this.maxScoreByExercise = maxScoreByExercise;
         this.tasks = tasks;
+        scores = new ArrayList<>();
     }
 
     public String getName(){
@@ -116,6 +100,10 @@ public class Module {
         this.scores = scores;
     }
 
+    public void addScore(ModuleScore score){
+        scores.add(score);
+    }
+
     @Override
     public boolean equals(Object o){
         if (o == this){
@@ -140,7 +128,7 @@ public class Module {
     @Override
     public String toString(){
         return String.format("Module={name=%s, maxScoreByHomeWork=%d, " +
-                "maxScoreByControlQuestion=%d, maxScoreByExercise=%d, tasks=%s}",
-                name, maxScoreByHomework, maxScoreByControlQuestion, maxScoreByExercise, tasks.toString());
+                "maxScoreByControlQuestion=%d, maxScoreByExercise=%d}",
+                name, maxScoreByHomework, maxScoreByControlQuestion, maxScoreByExercise);
     }
 }

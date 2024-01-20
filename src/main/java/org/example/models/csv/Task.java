@@ -2,6 +2,7 @@ package org.example.models.csv;
 
 import org.example.models.enums.TaskType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,17 +33,11 @@ public class Task {
      */
     private List<TaskScore> scores;
 
-    public Task(String name, TaskType type, Integer maxScore, List<TaskScore> scores) {
-        this.name = name;
-        this.type = type;
-        this.maxScore = maxScore;
-        this.scores = scores;
-    }
-
     public Task(String name, TaskType type, Integer maxScore) {
         this.name = name;
         this.type = type;
         this.maxScore = maxScore;
+        scores = new ArrayList<>();
     }
 
     public String getName() {
@@ -77,6 +72,9 @@ public class Task {
         this.scores = scores;
     }
 
+    public void addScore(TaskScore score){
+        scores.add(score);
+    }
     @Override
     public boolean equals(Object o) {
         if (o == this) {
@@ -98,6 +96,6 @@ public class Task {
 
     @Override
     public String toString(){
-        return String.format("Task={name=%s, type=%s, maxScore=%d}", name, type, maxScore);
+        return String.format("Task={name=%s, type=%s, maxScore=%d", name, type, maxScore);
     }
 }
