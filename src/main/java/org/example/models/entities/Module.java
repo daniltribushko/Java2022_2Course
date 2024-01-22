@@ -34,6 +34,12 @@ public class Module {
     @OneToMany(mappedBy = "module", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ModuleScore> moduleScores;
 
+    /**
+     * Список заданий
+     */
+    @OneToMany(mappedBy = "module", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Task> tasks;
+
     public Module(String name,
                   Integer maxScoreByExercise,
                   Integer maxScoreByControlQuestion,
@@ -43,6 +49,7 @@ public class Module {
         this.maxScoreByControlQuestion = maxScoreByControlQuestion;
         this.maxScoreByHomeWork = maxScoreByHomeWork;
         moduleScores = new ArrayList<>();
+        tasks = new ArrayList<>();
     }
 
     public Module() {
@@ -87,6 +94,15 @@ public class Module {
     public void addModuleScore(ModuleScore moduleScore){
         moduleScore.setModule(this);
         moduleScores.add(moduleScore);
+    }
+
+    /**
+     * Добавление задания в список
+     * @param task задание
+     */
+    public void addTask(Task task){
+        task.setModule(this);
+        tasks.add(task);
     }
 
     @Override

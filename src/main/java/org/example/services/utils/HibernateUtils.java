@@ -1,5 +1,6 @@
-package org.example.services;
+package org.example.services.utils;
 
+import org.example.models.entities.Module;
 import org.example.models.entities.ModuleScore;
 import org.example.models.entities.Student;
 import org.example.models.entities.Task;

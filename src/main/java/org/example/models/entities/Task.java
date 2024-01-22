@@ -36,7 +36,7 @@ public class Task {
     /**
      * Максимальное количество баллов за задание
      */
-    @Column(name = "score", nullable = false)
+    @Column(name = "maxScore", nullable = false)
     private Integer maxScore;
 
     /**
@@ -44,6 +44,10 @@ public class Task {
      */
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "task")
     private List<TaskScore> taskScores;
+
+    @ManyToOne
+    @JoinColumn(name = "module")
+    private Module module;
 
     public Task(String name, TaskType type, Integer maxScore) {
         this.name = name;
@@ -89,6 +93,14 @@ public class Task {
 
     public void setTaskScores(List<TaskScore> taskScores) {
         this.taskScores = taskScores;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 
     /**
