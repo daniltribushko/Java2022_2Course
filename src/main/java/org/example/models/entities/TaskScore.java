@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+/**
+ * @author Tribushko Danil
+ * @since 21.01.2024
+ * <p>
+ * Сущность успеваемости за задание
+ */
 @Entity
 @Table(name = "taskScores")
 public class TaskScore {
@@ -22,11 +28,12 @@ public class TaskScore {
     @JoinColumn(name = "student")
     private Student student;
 
-    public TaskScore(Integer score){
+    public TaskScore(Integer score) {
         this.score = score;
     }
 
-    public TaskScore(){}
+    public TaskScore() {
+    }
 
     public Integer getId() {
         return id;
