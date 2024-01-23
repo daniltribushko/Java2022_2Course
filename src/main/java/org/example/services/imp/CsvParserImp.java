@@ -29,10 +29,10 @@ public class CsvParserImp implements CsvParser {
      * Расширение файлов
      */
     private static final String EXTENSION = ".csv";
-    private final List<StudentCsv> studentCsvs;
+    private final List<StudentCsv> students;
 
     public CsvParserImp() {
-        studentCsvs = new ArrayList<>();
+        students= new ArrayList<>();
     }
 
     /**
@@ -75,7 +75,7 @@ public class CsvParserImp implements CsvParser {
                 String[] mas = scanner.nextLine().split(";");
                 //Создаем студента и добавляем его в список
                 StudentCsv studentCsv = new StudentCsv(mas[0], mas[1], group);
-                studentCsvs.add(studentCsv);
+                students.add(studentCsv);
                 //Порядковый номер модуля
                 int moduleNumber = 0;
                 //Получаем модуль из списка
@@ -183,4 +183,8 @@ public class CsvParserImp implements CsvParser {
         }
     }
 
+    @Override
+    public List<StudentCsv> getStudents() {
+        return students;
+    }
 }

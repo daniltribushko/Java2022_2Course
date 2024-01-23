@@ -1,6 +1,7 @@
 package org.example.services;
 
 import org.example.models.csv.ModuleCsv;
+import org.example.models.csv.StudentCsv;
 
 import java.util.List;
 
@@ -18,5 +19,12 @@ public interface CsvParser {
      * @return список модулей
      */
     List<ModuleCsv> getModuleFromCsv(Integer group);
+
+    /**
+     * Получение списка студентов
+     *
+     * @return список студентов
+     */
+    List<StudentCsv> getStudents();
 
 }

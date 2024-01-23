@@ -16,9 +16,6 @@ public class ModuleScore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "name", nullable = false)
-    private String name;
     @Column(name = "scoreByExercise", nullable = false)
     private Integer scoreByExercise;
 
@@ -36,8 +33,7 @@ public class ModuleScore {
     @JoinColumn(name = "module")
     private Module module;
 
-    public ModuleScore(String name, Integer scoreByExercise, Integer scoreByControlQuestion, Integer scoreByHomeWork) {
-        this.name = name;
+    public ModuleScore(Integer scoreByExercise, Integer scoreByControlQuestion, Integer scoreByHomeWork) {
         this.scoreByExercise = scoreByExercise;
         this.scoreByControlQuestion = scoreByControlQuestion;
         this.scoreByHomeWork = scoreByHomeWork;
@@ -46,14 +42,6 @@ public class ModuleScore {
     public ModuleScore(){};
     public Integer getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Integer getScoreByExercise() {
@@ -102,7 +90,6 @@ public class ModuleScore {
         if (o == null || getClass() != o.getClass()) return false;
         ModuleScore that = (ModuleScore) o;
         return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
                 Objects.equals(scoreByExercise, that.scoreByExercise) &&
                 Objects.equals(scoreByControlQuestion, that.scoreByControlQuestion) &&
                 Objects.equals(scoreByHomeWork, that.scoreByHomeWork) &&
@@ -112,14 +99,13 @@ public class ModuleScore {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, scoreByExercise, scoreByControlQuestion, scoreByHomeWork, student, module);
+        return Objects.hash(id, scoreByExercise, scoreByControlQuestion, scoreByHomeWork, student, module);
     }
 
     @Override
     public String toString() {
         return "ModuleScore{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", scoreByExercise=" + scoreByExercise +
                 ", scoreByControlQuestion=" + scoreByControlQuestion +
                 ", scoreByHomeWork=" + scoreByHomeWork +

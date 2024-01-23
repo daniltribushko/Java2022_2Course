@@ -34,7 +34,7 @@ public class Student {
     /**
      * Номер группы студента
      */
-    @Column(name = "group", nullable = false)
+    @Column(name = "groupNumber", nullable = false)
     private Integer group;
 
     /**

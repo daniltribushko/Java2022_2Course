@@ -38,7 +38,7 @@ public class StudentCsv {
         this.fullName = fullName;
     }
 
-    public String getULearnId(String uLearnId){
+    public String getULearnId(){
         return uLearnId;
     }
 

@@ -91,6 +91,22 @@ public class Module {
         this.maxScoreByHomeWork = maxScoreByHomeWork;
     }
 
+    public List<ModuleScore> getModuleScores() {
+        return moduleScores;
+    }
+
+    public void setModuleScores(List<ModuleScore> moduleScores) {
+        this.moduleScores = moduleScores;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public void addModuleScore(ModuleScore moduleScore){
         moduleScore.setModule(this);
         moduleScores.add(moduleScore);
