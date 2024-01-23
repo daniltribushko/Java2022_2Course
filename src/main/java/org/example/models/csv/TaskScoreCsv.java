@@ -8,34 +8,34 @@ import java.util.Objects;
  * <p>
  * Модель успеваемости студента за задание
  */
-public class TaskScore {
+public class TaskScoreCsv {
     /**
      * Студент курса
      */
-    private final Student student;
+    private final StudentCsv studentCsv;
 
     /**
      * Задание
      */
-    private final Task task;
+    private final TaskCsv taskCsv;
 
     /**
      * Количество набранных баллов
      */
     private Integer score;
 
-    public TaskScore(Student student, Task task, Integer score) {
-        this.student = student;
-        this.task = task;
+    public TaskScoreCsv(StudentCsv studentCsv, TaskCsv taskCsv, Integer score) {
+        this.studentCsv = studentCsv;
+        this.taskCsv = taskCsv;
         this.score = score;
     }
 
-    public Student getStudent() {
-        return student;
+    public StudentCsv getStudent() {
+        return studentCsv;
     }
 
-    public Task getTask() {
-        return task;
+    public TaskCsv getTask() {
+        return taskCsv;
     }
 
     public Integer getScore() {
@@ -54,20 +54,20 @@ public class TaskScore {
         if (o == null || o.getClass() != getClass()) {
             return false;
         }
-        TaskScore taskScore = (TaskScore) o;
-        return Objects.equals(student, taskScore.student) &&
-                Objects.equals(task, taskScore.task) &&
+        TaskScoreCsv taskScore = (TaskScoreCsv) o;
+        return Objects.equals(studentCsv, taskScore.studentCsv) &&
+                Objects.equals(taskCsv, taskScore.taskCsv) &&
                 Objects.equals(score, taskScore.score);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(student, task, score);
+        return Objects.hash(studentCsv, taskCsv, score);
     }
 
     @Override
     public String toString(){
         return String.format("TaskScore={student=%s, task=%s, score=%d}",
-                student.toString(), task.toString(), score);
+                studentCsv.toString(), taskCsv.toString(), score);
     }
 }

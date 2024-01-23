@@ -8,7 +8,7 @@ import java.util.Objects;
  * <p>
  * Модель студента курса
  */
-public class Student {
+public class StudentCsv {
     /**
      * Имя и фамилия студента курса
      */
@@ -24,7 +24,7 @@ public class Student {
      */
     private Integer group;
 
-    public Student(String fullName, String uLearnId, Integer group){
+    public StudentCsv(String fullName, String uLearnId, Integer group){
         this.fullName = fullName;
         this.uLearnId = uLearnId;
         this.group = group;
@@ -62,8 +62,8 @@ public class Student {
         if (o == null || o.getClass() != getClass()){
             return false;
         }
-        Student student = (Student) o;
-        return Objects.equals(fullName, student.fullName) && Objects.equals(uLearnId, student.uLearnId);
+        StudentCsv studentCsv = (StudentCsv) o;
+        return Objects.equals(fullName, studentCsv.fullName) && Objects.equals(uLearnId, studentCsv.uLearnId);
     }
 
     @Override

@@ -8,7 +8,7 @@ import java.util.*;
  * <p>
  * Модель модуля курса
  */
-public class Module {
+public class ModuleCsv {
     /**
      * Название модуля
      */
@@ -32,23 +32,23 @@ public class Module {
     /**
      * Список заданий
      */
-    private List<Task> tasks;
+    private List<TaskCsv> taskCsvs;
 
     /**
      * Список баллов студентов
      */
-    private List<ModuleScore> scores;
+    private List<ModuleScoreCsv> scores;
 
-    public Module(String name,
-                  Integer maxScoreByHomework,
-                  Integer maxScoreByControlQuestion,
-                  Integer maxScoreByExercise,
-                  List<Task> tasks){
+    public ModuleCsv(String name,
+                     Integer maxScoreByHomework,
+                     Integer maxScoreByControlQuestion,
+                     Integer maxScoreByExercise,
+                     List<TaskCsv> taskCsvs){
         this.name = name;
         this.maxScoreByHomework = maxScoreByHomework;
         this.maxScoreByControlQuestion = maxScoreByControlQuestion;
         this.maxScoreByExercise = maxScoreByExercise;
-        this.tasks = tasks;
+        this.taskCsvs = taskCsvs;
         scores = new ArrayList<>();
     }
 
@@ -84,23 +84,23 @@ public class Module {
         this.maxScoreByExercise = maxScoreByExercise;
     }
 
-    public List<Task> getTasks(){
-        return tasks;
+    public List<TaskCsv> getTasks(){
+        return taskCsvs;
     }
 
-    public void setTasks(List<Task> tasks){
-        this.tasks = tasks;
+    public void setTasks(List<TaskCsv> taskCsvs){
+        this.taskCsvs = taskCsvs;
     }
 
-    public List<ModuleScore> getScores(){
+    public List<ModuleScoreCsv> getScores(){
         return scores;
     }
 
-    public void setScores(List<ModuleScore> scores){
+    public void setScores(List<ModuleScoreCsv> scores){
         this.scores = scores;
     }
 
-    public void addScore(ModuleScore score){
+    public void addScore(ModuleScoreCsv score){
         scores.add(score);
     }
 
@@ -112,17 +112,17 @@ public class Module {
         if (o == null || o.getClass() != getClass()){
             return false;
         }
-        Module module = (Module) o;
-        return Objects.equals(name, module.name) &&
-                Objects.equals(maxScoreByControlQuestion, module.maxScoreByControlQuestion) &&
-                Objects.equals(maxScoreByExercise, module.maxScoreByExercise) &&
-                Objects.equals(maxScoreByHomework, module.maxScoreByHomework) &&
-                Objects.equals(tasks, module.tasks);
+        ModuleCsv moduleCsv = (ModuleCsv) o;
+        return Objects.equals(name, moduleCsv.name) &&
+                Objects.equals(maxScoreByControlQuestion, moduleCsv.maxScoreByControlQuestion) &&
+                Objects.equals(maxScoreByExercise, moduleCsv.maxScoreByExercise) &&
+                Objects.equals(maxScoreByHomework, moduleCsv.maxScoreByHomework) &&
+                Objects.equals(taskCsvs, moduleCsv.taskCsvs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, maxScoreByHomework, maxScoreByControlQuestion, maxScoreByExercise, tasks);
+        return Objects.hash(name, maxScoreByHomework, maxScoreByControlQuestion, maxScoreByExercise, taskCsvs);
     }
 
     @Override

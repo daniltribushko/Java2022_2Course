@@ -8,16 +8,16 @@ import java.util.Objects;
  * <p>
  * Модель успеваемости студента по модулю
  */
-public class ModuleScore {
+public class ModuleScoreCsv {
     /**
      * Модуль
      */
-    private final Module module;
+    private final ModuleCsv moduleCsv;
 
     /**
      * Студент
      */
-    private final Student student;
+    private final StudentCsv studentCsv;
 
     /**
      * Количество баллов за домашнии задания
@@ -34,24 +34,24 @@ public class ModuleScore {
      */
     private Integer scoreByExercise;
 
-    public ModuleScore(Module module,
-                       Student student,
-                       Integer scoreByHomeWork,
-                       Integer scoreByControlQuestion,
-                       Integer scoreByExercise) {
-        this.module = module;
-        this.student = student;
+    public ModuleScoreCsv(ModuleCsv moduleCsv,
+                          StudentCsv studentCsv,
+                          Integer scoreByHomeWork,
+                          Integer scoreByControlQuestion,
+                          Integer scoreByExercise) {
+        this.moduleCsv = moduleCsv;
+        this.studentCsv = studentCsv;
         this.scoreByHomeWork = scoreByHomeWork;
         this.scoreByControlQuestion = scoreByControlQuestion;
         this.scoreByExercise = scoreByExercise;
     }
 
-    public Module getModule() {
-        return module;
+    public ModuleCsv getModule() {
+        return moduleCsv;
     }
 
-    public Student getStudent() {
-        return student;
+    public StudentCsv getStudent() {
+        return studentCsv;
     }
 
     public Integer getScoreByHomeWork() {
@@ -86,23 +86,23 @@ public class ModuleScore {
         if (o == null || o.getClass() != getClass()) {
             return false;
         }
-        ModuleScore moduleScore = (ModuleScore) o;
-        return Objects.equals(module, moduleScore.module) &&
-                Objects.equals(student, moduleScore.student) &&
-                Objects.equals(scoreByExercise, moduleScore.scoreByExercise) &&
-                Objects.equals(scoreByControlQuestion, moduleScore.scoreByControlQuestion) &&
-                Objects.equals(scoreByHomeWork, moduleScore.scoreByHomeWork);
+        ModuleScoreCsv moduleScoreCsv = (ModuleScoreCsv) o;
+        return Objects.equals(moduleCsv, moduleScoreCsv.moduleCsv) &&
+                Objects.equals(studentCsv, moduleScoreCsv.studentCsv) &&
+                Objects.equals(scoreByExercise, moduleScoreCsv.scoreByExercise) &&
+                Objects.equals(scoreByControlQuestion, moduleScoreCsv.scoreByControlQuestion) &&
+                Objects.equals(scoreByHomeWork, moduleScoreCsv.scoreByHomeWork);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(module, student, scoreByExercise, scoreByControlQuestion, scoreByHomeWork);
+        return Objects.hash(moduleCsv, studentCsv, scoreByExercise, scoreByControlQuestion, scoreByHomeWork);
     }
 
     @Override
     public String toString() {
         return String.format("ModuleScore={module=%s, student=%s, scoreByExercise=%d," +
-                        " scoreByControlQuestion=%d, scoreByHomeWork=%d}", module.toString(), student.toString(),
+                        " scoreByControlQuestion=%d, scoreByHomeWork=%d}", moduleCsv.toString(), studentCsv.toString(),
                 scoreByExercise, scoreByControlQuestion, scoreByHomeWork);
     }
 }

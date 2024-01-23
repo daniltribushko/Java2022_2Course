@@ -1,6 +1,5 @@
-import org.example.models.csv.Module;
-import org.example.models.csv.Task;
-import org.example.models.csv.TaskScore;
+import org.example.models.csv.ModuleCsv;
+import org.example.models.csv.TaskScoreCsv;
 import org.example.services.CsvParser;
 import org.example.services.imp.CsvParserImp;
 import org.junit.jupiter.api.Assertions;
@@ -12,14 +11,14 @@ class CsvParserTest {
     @Test
     void getModulesTest(){
         CsvParser csvParser = new CsvParserImp();
-        List<Module> modules = csvParser.getModuleFromCsv(1);
-        Assertions.assertEquals(8, modules.get(0).getMaxScoreByControlQuestion());
-        Assertions.assertEquals(6, modules.get(1).getMaxScoreByExercise());
-        Module module3 = modules.get(2);
-        Assertions.assertEquals(2, module3.getMaxScoreByExercise());
-        Assertions.assertEquals(20, module3.getMaxScoreByHomework());
-        Assertions.assertEquals(4, module3.getMaxScoreByControlQuestion());
-        List<TaskScore> taskScore = module3.getTasks().get(0).getScores();
+        List<ModuleCsv> moduleCsvs = csvParser.getModuleFromCsv(1);
+        Assertions.assertEquals(8, moduleCsvs.get(0).getMaxScoreByControlQuestion());
+        Assertions.assertEquals(6, moduleCsvs.get(1).getMaxScoreByExercise());
+        ModuleCsv moduleCsv3 = moduleCsvs.get(2);
+        Assertions.assertEquals(2, moduleCsv3.getMaxScoreByExercise());
+        Assertions.assertEquals(20, moduleCsv3.getMaxScoreByHomework());
+        Assertions.assertEquals(4, moduleCsv3.getMaxScoreByControlQuestion());
+        List<TaskScoreCsv> taskScore = moduleCsv3.getTasks().get(0).getScores();
         Assertions.assertEquals(2, taskScore.get(0).getScore());
         Assertions.assertEquals(0, taskScore.get(taskScore.size() - 1).getScore());
         Assertions.assertEquals("Трибушко Данил", taskScore.get(13).getStudent().getFullName());

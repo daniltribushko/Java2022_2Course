@@ -12,7 +12,7 @@ import java.util.Objects;
  * <p>
  * Модель задания в курсе
  */
-public class Task {
+public class TaskCsv {
     /**
      * Название задания
      */
@@ -31,9 +31,9 @@ public class Task {
     /**
      * Список баллов студентов
      */
-    private List<TaskScore> scores;
+    private List<TaskScoreCsv> scores;
 
-    public Task(String name, TaskType type, Integer maxScore) {
+    public TaskCsv(String name, TaskType type, Integer maxScore) {
         this.name = name;
         this.type = type;
         this.maxScore = maxScore;
@@ -64,15 +64,15 @@ public class Task {
         this.maxScore = maxScore;
     }
 
-    public List<TaskScore> getScores(){
+    public List<TaskScoreCsv> getScores(){
         return scores;
     }
 
-    public void setScores(List<TaskScore> scores){
+    public void setScores(List<TaskScoreCsv> scores){
         this.scores = scores;
     }
 
-    public void addScore(TaskScore score){
+    public void addScore(TaskScoreCsv score){
         scores.add(score);
     }
     @Override
@@ -83,10 +83,10 @@ public class Task {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Task task = (Task) o;
-        return Objects.equals(name, task.name) &&
-                type == task.type &&
-                Objects.equals(maxScore, task.maxScore);
+        TaskCsv taskCsv = (TaskCsv) o;
+        return Objects.equals(name, taskCsv.name) &&
+                type == taskCsv.type &&
+                Objects.equals(maxScore, taskCsv.maxScore);
     }
 
     @Override
