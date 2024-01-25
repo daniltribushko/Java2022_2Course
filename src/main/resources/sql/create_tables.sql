@@ -7,6 +7,14 @@ create table modules
     maxScoreByHomeWork        INTEGER      NOT NULL
 );
 
+create table students
+(
+    id          SERIAL primary key,
+    fullName    VARCHAR(255) NOT NULL,
+    uLearnID    VARCHAR(255) NOT NULL,
+    groupNumber INTEGER      NOT NULL
+);
+
 create table moduleScores
 (
     id                     SERIAL primary key,
@@ -34,9 +42,27 @@ create table taskScores
     student INTEGER references students (id) on DELETE cascade on UPDATE cascade
 );
 
-create table students(
-                         id SERIAL primary key ,
-                         fullName VARCHAR(255) NOT NULL ,
-                         uLearnID VARCHAR(255) NOT NULL ,
-                         groupNumber INTEGER NOT NULL
+
+create table vk_groups
+(
+    id   SERIAL primary key,
+    name VARCHAR(255) NOT NULL,
+    vkId VARCHAR(255) NOT NULL
+);
+
+create table vk_students
+(
+    id         SERIAL primary key,
+    fullName   VARCHAR(255) NOT NULL,
+    gender     VARCHAR(255) NOT NULL,
+    city       VARCHAR(255),
+    vkId       INTEGER,
+    student_id INTEGER references vk_students (id)
+);
+
+create table vk_groups_students
+(
+    id            SERIAL primary key,
+    group_id      INTEGER references vk_groups (id),
+    student_vk_id INTEGER references vk_students (id)
 );

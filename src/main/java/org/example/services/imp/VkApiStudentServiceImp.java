@@ -19,8 +19,9 @@ import org.example.services.VkApiStudentService;
  */
 public class VkApiStudentServiceImp implements VkApiStudentService {
     @Override
-    public VkStudent getStudent(VkApiClient vk, UserActor actor, String fullName, Long groupId) throws ClientException, ApiException {
+    public VkStudent getStudent(VkApiClient vk, UserActor actor, String fullName, Long groupId) throws ClientException, ApiException, InterruptedException {
         UserFull user = getUser(vk, actor, fullName, groupId);
+        String oldFullName = fullName;
         if (user == null) {
             String[] fullNameMas = fullName.split(" ");
             fullName = fullNameMas[1] + " " + fullNameMas[0];
@@ -29,7 +30,9 @@ public class VkApiStudentServiceImp implements VkApiStudentService {
         VkStudent student = null;
         if (user != null) {
             user.getSex();
-            student = new VkStudent(user.getLastName() + " " + user.getFirstName(), getGender(user.getSex()));
+            student = new VkStudent(user.getId(),
+                    oldFullName,
+                    getGender(user.getSex()));
         }
         return student;
     }
@@ -61,11 +64,12 @@ public class VkApiStudentServiceImp implements VkApiStudentService {
      * @param groupId  идентификатор сообщества
      * @return пользователь вк
      */
-    private UserFull getUser(VkApiClient vk, UserActor actor, String fullName, Long groupId) throws ClientException, ApiException {
+    private UserFull getUser(VkApiClient vk, UserActor actor, String fullName, Long groupId) throws ClientException, ApiException, InterruptedException {
+        Thread.sleep(500);
         return vk.users()
                 .search(actor)
                 .q(fullName)
-                .fields(Fields.NICKNAME, Fields.SEX)
+                .fields(Fields.NICKNAME, Fields.SEX, Fields.CITY)
                 .groupId(groupId)
                 .execute()
                 .getItems()

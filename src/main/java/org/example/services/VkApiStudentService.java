@@ -22,5 +22,5 @@ public interface VkApiStudentService {
      * @param groupId индетификатор группы вк
      * @return студент вк
      */
-    VkStudent getStudent(VkApiClient vk, UserActor actor, String fullName, Long groupId) throws ClientException, ApiException;
+    VkStudent getStudent(VkApiClient vk, UserActor actor, String fullName, Long groupId) throws ClientException, ApiException, InterruptedException;
 }

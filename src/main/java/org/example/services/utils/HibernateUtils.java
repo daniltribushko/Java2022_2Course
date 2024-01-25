@@ -1,10 +1,7 @@
 package org.example.services.utils;
 
+import org.example.models.entities.*;
 import org.example.models.entities.Module;
-import org.example.models.entities.ModuleScore;
-import org.example.models.entities.Student;
-import org.example.models.entities.Task;
-import org.example.models.entities.TaskScore;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -34,6 +31,8 @@ public class HibernateUtils {
                 configuration.addAnnotatedClass(Student.class);
                 configuration.addAnnotatedClass(TaskScore.class);
                 configuration.addAnnotatedClass(Task.class);
+                configuration.addAnnotatedClass(StudentFromVk.class);
+                configuration.addAnnotatedClass(GroupFromVk.class);
                 sessionFactory = configuration.buildSessionFactory();
             } catch (Exception e) {
                 System.out.println(e.getMessage());

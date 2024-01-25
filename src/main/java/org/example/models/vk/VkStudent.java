@@ -13,15 +13,15 @@ import java.util.Objects;
  * Модуль стдуента из вк
  */
 public class VkStudent {
+    private Long vkId;
     private String name;
     private Gender gender;
-    private List<VkGroup> groups;
     private String city;
 
-    public VkStudent(String name, Gender gender){
+    public VkStudent(Long vkId, String name, Gender gender){
+        this.vkId = vkId;
         this.name = name;
         this.gender = gender;
-        groups = new ArrayList<>();
     }
 
     public String getName() {
@@ -40,14 +40,6 @@ public class VkStudent {
         this.gender = gender;
     }
 
-    public List<VkGroup> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<VkGroup> groups) {
-        this.groups = groups;
-    }
-
     public String getCity() {
         return city;
     }
@@ -56,23 +48,32 @@ public class VkStudent {
         this.city = city;
     }
 
+    public Long getVkId() {
+        return vkId;
+    }
+
+    public void setVkId(Long vkId) {
+        this.vkId = vkId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VkStudent vkStudent = (VkStudent) o;
-        return Objects.equals(name, vkStudent.name) && gender == vkStudent.gender && Objects.equals(city, vkStudent.city);
+        return Objects.equals(vkId, vkStudent.vkId) && Objects.equals(name, vkStudent.name) && gender == vkStudent.gender && Objects.equals(city, vkStudent.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, gender, city);
+        return Objects.hash(vkId, name, gender, city);
     }
 
     @Override
     public String toString() {
         return "VkStudent{" +
-                "name='" + name + '\'' +
+                "vkId=" + vkId +
+                ", name='" + name + '\'' +
                 ", gender=" + gender +
                 ", city='" + city + '\'' +
                 '}';

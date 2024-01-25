@@ -37,6 +37,9 @@ public class Student {
     @Column(name = "groupNumber", nullable = false)
     private Integer group;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "student")
+    private StudentFromVk studentVk;
+
     /**
      * Список баллов студента за задания
      */
@@ -111,6 +114,22 @@ public class Student {
     public void addModuleScore(ModuleScore moduleScore){
         moduleScore.setStudent(this);
         moduleScores.add(moduleScore);
+    }
+
+    public List<ModuleScore> getModuleScores() {
+        return moduleScores;
+    }
+
+    public void setModuleScores(List<ModuleScore> moduleScores) {
+        this.moduleScores = moduleScores;
+    }
+
+    public StudentFromVk getStudentVk() {
+        return studentVk;
+    }
+
+    public void setStudentVk(StudentFromVk studentVk) {
+        this.studentVk = studentVk;
     }
 
     @Override

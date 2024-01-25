@@ -23,7 +23,7 @@ public interface VKApiGroupService {
      * @param name      название сообщества
      * @return сообщество вк
      */
-    Optional<VkGroup> getGroup(VkApiClient apiClient, UserActor actor, String name) throws ClientException, ApiException;
+    Optional<VkGroup> getGroup(VkApiClient apiClient, UserActor actor, String name) throws ClientException, ApiException, InterruptedException;
 
     /**
      * Проверка является ли пользователь участником сообщества
@@ -34,5 +34,5 @@ public interface VKApiGroupService {
      * @param userId    идентификатор пользователя
      * @return логическое значение является ли пользователь участником сообщества
      */
-    boolean isMember(VkApiClient apiClient, UserActor actor, String groupName, Long userId) throws ClientException, ApiException;
+    boolean isMember(VkApiClient apiClient, UserActor actor, String groupName, Long userId) throws ClientException, ApiException, InterruptedException;
 }

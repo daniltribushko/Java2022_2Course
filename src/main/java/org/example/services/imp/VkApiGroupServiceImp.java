@@ -18,7 +18,7 @@ import java.util.Optional;
  */
 public class VkApiGroupServiceImp implements VKApiGroupService {
     @Override
-    public Optional<VkGroup> getGroup(VkApiClient apiClient, UserActor actor, String name) throws ClientException, ApiException {
+    public Optional<VkGroup> getGroup(VkApiClient apiClient, UserActor actor, String name) throws ClientException, ApiException, InterruptedException {
         GroupFull groupFull = apiClient.groups()
                 .search(actor)
                 .q(name)
@@ -32,17 +32,20 @@ public class VkApiGroupServiceImp implements VKApiGroupService {
         if (groupFull != null) {
             vkGroup = new VkGroup(groupFull.getId(), groupFull.getName());
         }
+        Thread.sleep(500);
         return Optional.ofNullable(vkGroup);
     }
 
     @Override
-    public boolean isMember(VkApiClient apiClient, UserActor actor, String groupName, Long userId) throws ClientException, ApiException {
+    public boolean isMember(VkApiClient apiClient, UserActor actor, String groupId, Long userId) throws ClientException, ApiException, InterruptedException {
         String isMember = apiClient.groups()
                 .isMember(actor)
-                .groupId(groupName)
+                .groupId(groupId)
                 .userId(userId)
                 .execute()
                 .getValue();
+        Thread.sleep(500);
+        System.out.println(isMember);
         return isMember.equals("1");
     }
 }
