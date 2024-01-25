@@ -57,7 +57,7 @@ create table vk_students
     gender     VARCHAR(255) NOT NULL,
     city       VARCHAR(255),
     vkId       INTEGER,
-    student_id INTEGER references vk_students (id)
+    student_id INTEGER references students (id) on update cascade on delete  cascade
 );
 
 create table vk_groups_students

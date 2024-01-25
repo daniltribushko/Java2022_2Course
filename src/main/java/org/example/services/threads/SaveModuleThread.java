@@ -59,5 +59,6 @@ public class SaveModuleThread implements Runnable{
             moduleDbService.save(session, module);
             System.out.println("Модуль сохранен");
         }
+        session.close();
     }
 }

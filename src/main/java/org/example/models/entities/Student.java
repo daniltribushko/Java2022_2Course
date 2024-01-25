@@ -38,6 +38,7 @@ public class Student {
     private Integer group;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "student")
+    @PrimaryKeyJoinColumn
     private StudentFromVk studentVk;
 
     /**

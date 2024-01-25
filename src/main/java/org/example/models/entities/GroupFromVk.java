@@ -74,7 +74,6 @@ public class GroupFromVk {
     }
 
     public void addStudent(StudentFromVk student){
-        System.out.println("-----------");
         List<GroupFromVk> studentGroups = student.getGroups();
         studentGroups.add(this);
         student.setGroups(studentGroups);

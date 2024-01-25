@@ -45,7 +45,6 @@ public class VkApiGroupServiceImp implements VKApiGroupService {
                 .execute()
                 .getValue();
         Thread.sleep(500);
-        System.out.println(isMember);
         return isMember.equals("1");
     }
 }
