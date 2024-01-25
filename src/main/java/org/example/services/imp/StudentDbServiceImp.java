@@ -9,6 +9,12 @@ import org.hibernate.Session;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Tribushko Danil
+ * @since 24.01.2024
+ *
+ * Реализация сервиса по работе с студентами в бд
+ */
 public class StudentDbServiceImp implements StudentDbService {
     private final StudentDao dao;
     public StudentDbServiceImp(){
@@ -54,7 +60,7 @@ public class StudentDbServiceImp implements StudentDbService {
 
     @Override
     public List<Student> findAll(Session session) {
-        return null;
+        return dao.findAll(session);
     }
 
     @Override
