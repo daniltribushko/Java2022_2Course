@@ -67,4 +67,9 @@ public class StudentDbServiceImp implements StudentDbService {
     public Optional<Student> findByFullName(Session session, String fullName) {
         return dao.findByFullName(session, fullName);
     }
+
+    @Override
+    public List<Student> findAllByGroup(Session session, Integer group) {
+        return dao.findAllByGroup(session, group);
+    }
 }

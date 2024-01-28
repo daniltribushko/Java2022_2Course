@@ -19,6 +19,7 @@ import java.util.Optional;
  */
 public class StudentDaoImp implements StudentDao {
     private static final Class<Student> CLASS = Student.class;
+
     @Override
     public void save(Session session, Student object) {
         Transaction transaction = session.beginTransaction();
@@ -60,5 +61,14 @@ public class StudentDaoImp implements StudentDao {
         Root<Student> root = query.from(CLASS);
         query.select(root).where(builder.equal(root.get("fullName"), fullName));
         return Optional.ofNullable(session.createQuery(query).uniqueResult());
+    }
+
+    @Override
+    public List<Student> findAllByGroup(Session session, Integer group) {
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Student> query = builder.createQuery(CLASS);
+        Root<Student> root = query.from(CLASS);
+        query.select(root).where(builder.equal(root.get("group"), group));
+        return session.createQuery(query).getResultList();
     }
 }
