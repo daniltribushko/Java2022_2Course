@@ -1,17 +1,11 @@
 package org.example;
 
-import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import org.example.models.csv.*;
 import org.example.models.dao.StudentDao;
-import org.example.models.dao.StudentFromVkDao;
 import org.example.models.dao.imp.StudentDaoImp;
 import org.example.models.entities.*;
-import org.example.models.entities.Module;
-import org.example.models.vk.VkGroup;
-import org.example.models.vk.VkStudent;
 import org.example.services.*;
 import org.example.services.imp.*;
 import org.example.services.threads.SaveModuleThread;
@@ -20,22 +14,20 @@ import org.example.services.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
 public class Main {
-    private static List<StudentCsv> students;
+    private List<StudentCsv> students;
 
-    public static void main(String[] args) throws ClientException, ApiException, InterruptedException {
+    public static void main(String[] args) throws ClientException, ApiException, InterruptedException, IOException {
         Main main = new Main();
         SessionFactory factory = HibernateUtils.getSessionFactory();
         List<ModuleCsv> allModules = main.getAllModules();
-        /*main.saveStudents(factory.openSession(), students);
-        main.saveModulesInDb(factory, allModules);
-        main.saveStudentAndGroupsInVk(factory);
-        main.saveStudentWithVkStudent(factory);*/
+        //main.saveStudents(factory.openSession(), students);
+        //main.saveModulesInDb(factory, allModules);
+        //main.saveStudentAndGroupsInVk(factory);
+        //main.saveStudentWithVkStudent(factory);
 
     }
 
@@ -62,18 +54,18 @@ public class Main {
     private void saveModulesInDb(SessionFactory factory, List<ModuleCsv> modulesCsv) {
         Thread thread = new Thread(new SaveModuleThread(factory.openSession(),
                 List.of(modulesCsv.get(0),
-                        modulesCsv.get(1),
-                        modulesCsv.get(2),
-                        modulesCsv.get(3))));
-        Thread thread2 = new Thread(new SaveModuleThread(factory.openSession(),
-                List.of(modulesCsv.get(4),
-                        modulesCsv.get(5),
+                        modulesCsv.get(3),
                         modulesCsv.get(6),
-                        modulesCsv.get(7))));
+                        modulesCsv.get(9))));
+        Thread thread2 = new Thread(new SaveModuleThread(factory.openSession(),
+                List.of(modulesCsv.get(1),
+                        modulesCsv.get(4),
+                        modulesCsv.get(7),
+                        modulesCsv.get(10))));
         Thread thread3 = new Thread(new SaveModuleThread(factory.openSession(),
-                List.of(modulesCsv.get(8),
-                        modulesCsv.get(9),
-                        modulesCsv.get(10),
+                List.of(modulesCsv.get(2),
+                        modulesCsv.get(5),
+                        modulesCsv.get(8),
                         modulesCsv.get(11))));
         thread.start();
         thread2.start();
@@ -83,6 +75,7 @@ public class Main {
             thread2.join();
             thread3.join();
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
     }

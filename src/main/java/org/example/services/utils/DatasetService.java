@@ -136,11 +136,14 @@ public class DatasetService {
             }
         }
         dataset.setValue("Первая группа",
-                getPercentage(maxScoreStudents * countStudentsGroup1, scoresFirstGroup));
+                getPercentage(maxScoreStudents * countStudentsGroup1,
+                        scoresFirstGroup));
         dataset.setValue("Вторая группа",
-                getPercentage(maxScoreStudents * countStudentsGroup2, scoresSecondGroup));
+                getPercentage(maxScoreStudents * countStudentsGroup2,
+                        scoresSecondGroup));
         dataset.setValue("Третья группа",
-                getPercentage(maxScoreStudents * countStudentsGroup3, scoresThirdGroup));
+                getPercentage(maxScoreStudents * countStudentsGroup3,
+                        scoresThirdGroup));
         return dataset;
     }
 
