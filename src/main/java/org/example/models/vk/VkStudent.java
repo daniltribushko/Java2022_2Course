@@ -2,8 +2,6 @@ package org.example.models.vk;
 
 import org.example.models.enums.Gender;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**

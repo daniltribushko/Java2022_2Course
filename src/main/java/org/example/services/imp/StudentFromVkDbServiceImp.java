@@ -38,7 +38,7 @@ public class StudentFromVkDbServiceImp implements StudentFromVkDbService {
         StudentFromVk newStudent = findByFullName(session, student.getName())
                 .orElse(null);
         if (newStudent == null) {
-            System.out.println("!!!Ошибка!!! Студент " + student.getName() + " не найден");
+            System.out.println(getErrorMessage(student));
         } else {
             dao.update(session, student);
         }
@@ -49,12 +49,15 @@ public class StudentFromVkDbServiceImp implements StudentFromVkDbService {
         StudentFromVk newStudent = findByFullName(session, student.getName())
                 .orElse(null);
         if (newStudent == null) {
-            System.out.println("!!!Ошибка!!! Студент " + student.getName() + " не найден");
+            System.out.println(getErrorMessage(student));
         } else {
             dao.delete(session, student);
         }
     }
 
+    private String getErrorMessage(StudentFromVk student){
+        return "!!!Ошибка!!! Студент " + student.getName() + " не найден";
+    }
     @Override
     public Optional<StudentFromVk> findById(Session session, Integer id) {
         return dao.findById(session, id);

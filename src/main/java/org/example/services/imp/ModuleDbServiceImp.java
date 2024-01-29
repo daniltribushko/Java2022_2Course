@@ -39,7 +39,7 @@ public class ModuleDbServiceImp implements ModuleDbService {
         if (isModuleSave != null) {
             dao.update(session, module);
         } else {
-            System.out.println("!!!Ошибка!!! Модуль " + module.getName() + " не найден");
+            System.out.println(getErrorMessage(module));
         }
     }
 
@@ -49,10 +49,13 @@ public class ModuleDbServiceImp implements ModuleDbService {
         if (isModuleSave != null) {
             dao.delete(session, module);
         } else {
-            System.out.println("!!!Ошибка!!! Модуль " + module.getName() + " не найден");
+            System.out.println(getErrorMessage(module));
         }
     }
 
+    private String getErrorMessage(Module module){
+        return "!!!Ошибка!!! Модуль " + module.getName() + " не найден";
+    }
     @Override
     public Optional<Module> findById(Session session, Integer id) {
         return dao.findById(session, id);

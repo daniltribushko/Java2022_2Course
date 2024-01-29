@@ -43,10 +43,8 @@ public class CsvParserImp implements CsvParser {
     @Override
     public List<ModuleCsv> getModuleFromCsv(Integer group) {
         List<ModuleCsv> result = new ArrayList<>();
-        try {
-            //Сканируем файл
-            Scanner scanner = new Scanner(new BufferedReader(
-                    new FileReader(FILES_DIRECTORY + FILE_NAME + group + EXTENSION)));
+        try (Scanner scanner = new Scanner(new BufferedReader(
+                new FileReader(FILES_DIRECTORY + FILE_NAME + group + EXTENSION)))) {
             //Парсим первую строку, в которой содержатся названия модулей
             String[] modules = scanner.nextLine().split(";");
             //Парсим вторую строку, в которой содержатся названия заданий

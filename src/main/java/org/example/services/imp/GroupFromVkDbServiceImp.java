@@ -38,7 +38,7 @@ public class GroupFromVkDbServiceImp implements GroupFromVkDbService {
         GroupFromVk newGroup = findByName(session, group.getName())
                 .orElse(null);
         if (newGroup == null){
-            System.out.println("!!!Ошибка!!! Студент " + group.getName() + " не найден");
+            System.out.println(getErrorMessage(group));
         } else {
             dao.update(session, group);
         }
@@ -50,12 +50,15 @@ public class GroupFromVkDbServiceImp implements GroupFromVkDbService {
         GroupFromVk newGroup = findByName(session, group.getName())
                 .orElse(null);
         if (newGroup == null){
-            System.out.println("!!!Ошибка!!! Студент " + group.getName() + " не найден");
+            System.out.println(getErrorMessage(group));
         } else {
             dao.delete(session, group);
         }
     }
 
+    private String getErrorMessage(GroupFromVk group){
+        return "!!!Ошибка!!! Студент " + group.getName() + " не найден";
+    }
     @Override
     public Optional<GroupFromVk> findById(Session session, Integer id) {
         return dao.findById(session, id);

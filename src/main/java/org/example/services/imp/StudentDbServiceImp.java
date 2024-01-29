@@ -38,7 +38,7 @@ public class StudentDbServiceImp implements StudentDbService {
         if (newStudent != null){
             dao.update(session, student);
         } else {
-            System.out.println("!!!Ошибка!!! Студент " + student.getFullName() + " не найден");
+            System.out.println(getErrorMessage(student));
         }
     }
 
@@ -49,8 +49,12 @@ public class StudentDbServiceImp implements StudentDbService {
         if (newStudent != null){
             dao.delete(session, student);
         } else {
-            System.out.println("!!!Ошибка!!! Студент " + student.getFullName() + " не найден");
+            System.out.println(getErrorMessage(student));
         }
+    }
+
+    private String getErrorMessage(Student student){
+        return "!!!Ошибка!!! Студент " + student.getFullName() + " не найден";
     }
 
     @Override

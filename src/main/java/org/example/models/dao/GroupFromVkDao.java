@@ -1,6 +1,5 @@
 package org.example.models.dao;
 
-import org.example.models.dao.Dao;
 import org.example.models.entities.GroupFromVk;
 import org.hibernate.Session;
 
