@@ -16,12 +16,12 @@ import org.hibernate.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SaveVkGroupsAndStudents implements Runnable{
+public class SaveVkGroupsAndStudentsThread implements Runnable{
 
     private final Session session;
 
 
-    public SaveVkGroupsAndStudents(Session session){
+    public SaveVkGroupsAndStudentsThread(Session session){
         this.session = session;
     }
 

@@ -66,7 +66,6 @@ public class DatasetService {
                 int percentageScores = getPercentage(maxStudentsScoreByExercise, studentsScoreByExercise) +
                         getPercentage(maxStudentsScoreByControlQuestion, studentScoreByControlQuestion) +
                         getPercentage(maxStudentsScoreByHomeWork, studentScoreByHomeWork);
-                System.out.println(data.getKey() + " " + module.getName() + " " + percentageScores + " " + count);
                 dataset.addValue(percentageScores / count,
                         data.getKey(),
                         module.getName());
