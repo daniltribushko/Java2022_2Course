@@ -115,6 +115,7 @@ public class ChartService {
         render.setAutoPopulateSeriesShape(false);
         render.setDefaultShape(new Rectangle2D.Double(-10.0, -10.0,
                 20.0, 20.0));
+        plot.setRenderer(render);
         return chart;
     }
 
