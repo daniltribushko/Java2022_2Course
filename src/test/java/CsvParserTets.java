@@ -23,4 +23,13 @@ class CsvParserTest {
         Assertions.assertEquals(0, taskScore.get(taskScore.size() - 1).getScore());
         Assertions.assertEquals("Трибушко Данил", taskScore.get(13).getStudent().getFullName());
     }
+
+    @Test
+    void getStudentsTest(){
+        CsvParser csvParser = new CsvParserImp();
+        csvParser.getModuleFromCsv(1);
+        csvParser.getModuleFromCsv(2);
+        csvParser.getModuleFromCsv(3);
+        Assertions.assertEquals(62, csvParser.getStudents().size());
+    }
 }
